@@ -1,8 +1,12 @@
+import java.util.Date
+
 trait Wallet {
+  def walletNumber: String
   def currency: String
-  def insert()
-  def withdraw()
-  def transfer()
+  def insert(amount: Int)
+  def withdraw(amount: Int)
+  def transfer(to: Wallet, amount: Int)
+  def getWalletHistory(from: Date, to: Date): String
 }
 
 object Wallet {
@@ -10,20 +14,13 @@ object Wallet {
 }
 
 case class WalletInstance(currency: String) extends Wallet {
-  override def insert(): Unit = ???
+  override def walletNumber: String = ???
 
-  override def withdraw(): Unit = ???
+  override def insert(amount: Int): Unit = ???
 
-  override def transfer(): Unit = ???
+  override def withdraw(amount: Int): Unit = ???
+
+  override def transfer(to: Wallet, amount: Int): Unit = ???
+
+  override def getWalletHistory(from: Date, to: Date): String = ???
 }
-
-trait CurrencyService {
-  // TODO: send request to http://www.cbr.ru/scripts/XML_valFull.asp and parse XML
-  def getAllISO(): List[ISO]
-
-  // TODO: send request to http://www.cbr.ru/scripts/XML_daily.asp?date_req=31/03/2020 and parse XML
-  def getCurrencyStat(): Map[ISO, Double]
-}
-
-case class ISO(name: String, numCode: Int, charCode: String)
-
