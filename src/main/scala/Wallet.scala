@@ -6,7 +6,7 @@ trait Wallet {
   def insert(amount: Int)
   def withdraw(amount: Int)
   def transfer(to: Wallet, amount: Int)
-  def getWalletHistory(from: Date, to: Date): String
+  def getHistory(from: Date, to: Date): String
 }
 
 object Wallet {
@@ -22,5 +22,5 @@ case class WalletInstance(currency: String) extends Wallet {
 
   override def transfer(to: Wallet, amount: Int): Unit = ???
 
-  override def getWalletHistory(from: Date, to: Date): String = ???
+  override def getHistory(from: Date, to: Date): String = ???
 }

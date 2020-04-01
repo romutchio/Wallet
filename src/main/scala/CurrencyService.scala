@@ -19,9 +19,9 @@ trait CurrencyService {
 
 
 
-implicit val isoCache: Cache[List[ISO]] = MemcachedCache("localhost:11211")
-
 case class DummyCurrencyService() extends CurrencyService {
+  implicit val isoCache: Cache[List[ISO]] = MemcachedCache("localhost:11211")
+
   override def getAllISO(): Try[List[ISO]] = memoizeF[Try, List[ISO]](Some(24.hours)) {
     Try {
       ISO ("Russian ruble", 72, "RUB") :: ISO("Dollar", 22, "USD") :: Nil

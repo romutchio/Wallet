@@ -2,8 +2,8 @@ import java.util.Date
 
 sealed trait User {
   def fullName: String
-
   def phone: String
+
   def addWallet(currency: String): Wallet
   def deleteWallet(number: String)
   def getWallet(number: String): Wallet

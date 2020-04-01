@@ -26,7 +26,7 @@ trait UserService {
 
 
 case class DummyUserService() extends UserService {
-  override def createUser(fullname: String, phone: String): User = User(fullname, phone)
+  override def createUser(fullname: String, phone: String): User = AnonymousUser(fullname, phone)
 
   override def createWallet(user: User, currency: String): Wallet = user.addWallet(currency)
 
