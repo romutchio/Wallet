@@ -1,38 +1,25 @@
 import java.util.Date
 
+case class UserName(value: String)
+case class PhoneNumber(value: Long)
+
 sealed trait User {
-  def fullName: String
-  def phone: String
+  def userName: UserName
+  def phoneNumber: PhoneNumber
 
-  def addWallet(currency: String): Wallet
-  def deleteWallet(number: String)
-  def getWallet(number: String): Wallet
-
-  def report(from: Date, to: Date): Report
+//  def addWallet(currency: String): Wallet
+//  def deleteWallet(number: String)
+//  def getWallet(number: String): Wallet
+//
+//  def report(from: Date, to: Date): Report
 }
 
-object User {
+case class AnonymousUser(userName: UserName, phoneNumber: PhoneNumber) extends User {
 
 }
 
-case class AnonymousUser(fullName: String, phone: String) extends User {
-  override def addWallet(currency: String): Wallet = ???
+case class TrustedUser(userName: UserName, phoneNumber: PhoneNumber) extends User {
 
-  override def deleteWallet(number: String): Unit = ???
-
-  override def getWallet(number: String): Wallet = ???
-
-  override def report(from: Date, to: Date): Report = ???
-}
-
-case class TrustedUser(fullName: String, phone: String) extends User {
-  override def addWallet(currency: String): Wallet = ???
-
-  override def deleteWallet(number: String): Unit = ???
-
-  override def getWallet(number: String): Wallet = ???
-
-  override def report(from: Date, to: Date): Report = ???
 }
 
 trait Report {
