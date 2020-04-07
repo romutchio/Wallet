@@ -6,7 +6,7 @@ import org.http4s.dsl.Http4sDsl
 import org.http4s.server.Router
 
 
-final class WalletRoutes[F[_]: Defer: Monad] extends Http4sDsl[F] {
+final class UserRoutes[F[_]: Defer: Monad] extends Http4sDsl[F] {
     private[routes] val prefixPath = "/users"
 
     private val httpRoutes: HttpRoutes[F] = HttpRoutes.of[F] {
